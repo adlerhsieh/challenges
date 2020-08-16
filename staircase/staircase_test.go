@@ -9,43 +9,44 @@ import (
 
 func Test_St(t *testing.T) {
 	cases := []struct {
-		n          int
-		approaches [][]int
+		input  int
+		ways   []int
+		output int
 	}{
 		{
-			n: 1,
-			approaches: [][]int{
-				[]int{1},
-			},
+			input:  2,
+			ways:   []int{1, 2},
+			output: 2,
 		},
 		{
-			n: 2,
-			approaches: [][]int{
-				[]int{1, 1},
-				[]int{2},
-			},
+			input:  3,
+			ways:   []int{1, 2, 3},
+			output: 4,
 		},
 		{
-			n: 3,
-			approaches: [][]int{
-				[]int{1, 1, 1},
-				[]int{2, 1},
-				[]int{1, 2},
-			},
+			input:  3,
+			ways:   []int{1},
+			output: 1,
 		},
 		{
-			n: 4,
-			approaches: [][]int{
-				[]int{1, 1, 1, 1},
-				[]int{1, 2, 1},
-				[]int{1, 1, 2},
-				[]int{2, 2},
-			},
+			input:  4,
+			ways:   []int{3, 5},
+			output: 1,
+		},
+		{
+			input:  4,
+			ways:   []int{1, 2, 5},
+			output: 5,
+		},
+		{
+			input:  4,
+			ways:   []int{1, 2, 3},
+			output: 7,
 		},
 	}
 
 	for _, c := range cases {
-		result := St(c.n)
-		assert.Equal(t, len(c.approaches), len(result), fmt.Sprintf("n = %d", c.n))
+		result := St(c.input, c.ways)
+		assert.Equal(t, c.output, result, fmt.Sprintf("n = %d, ways = %v", c.input, c.ways))
 	}
 }
